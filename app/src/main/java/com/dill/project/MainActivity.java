@@ -2,9 +2,9 @@ package com.dill.project;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -29,21 +29,23 @@ import org.apache.http.impl.client.DefaultHttpClient;
 
 import java.io.IOException;
 
-import static java.lang.Math.round;
-
 public class MainActivity extends AppCompatActivity {
 
-    TextView tv;
+    TextView tv, score;
     Button sol, check;
     EditText answer;
     String resp = "", url;
     String[] ans;
     Spinner items, items2;
     ProgressBar pbar;
-    int classID, correct = 1, wrong = 1;
+    int classID, correct, wrong;
     ArrayAdapter<?> adapter, adapter2;
     private static long back_pressed;
     boolean cancelled, second = false;
+    SharedPreferences savedCorrect, savedWrong;
+    public static final String APP_PREFERENCES = "stats";
+    public static final String APP_PREFERENCES_CORRECT = "Correct";
+    public static final String APP_PREFERENCES_WRONG = "Wrong";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,11 @@ public class MainActivity extends AppCompatActivity {
         //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.main);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
+        savedCorrect = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        correct = savedCorrect.getInt(APP_PREFERENCES_CORRECT, 0);
+        savedWrong = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        wrong = savedWrong.getInt(APP_PREFERENCES_WRONG, 0);
 
         /*tv = (TextView) findViewById(R.id.textView);
         sol = (Button) findViewById(R.id.sol);
@@ -205,30 +212,56 @@ public class MainActivity extends AppCompatActivity {
     public void choose() {
         switch (classID) {
             case 0:
+                try {
+                    getSupportActionBar().setTitle(R.string.action_bar_bin_codes);
+                } catch (NullPointerException e) {
+                    Log.d("", "Action bar is not supported");
+                }
                 adapter = ArrayAdapter.createFromResource(this, R.array.codes_and_sum, android.R.layout.simple_spinner_item);
                 adapter2 = ArrayAdapter.createFromResource(this, R.array.codes, android.R.layout.simple_spinner_item);
                 answer.setInputType(InputType.TYPE_CLASS_DATETIME);
                 answer.setKeyListener(DigitsKeyListener.getInstance("01. -"));
                 break;
             case 1:
+                try {
+                    getSupportActionBar().setTitle(R.string.action_bar_multiplication);
+                } catch (NullPointerException e) {
+                    Log.d("", "Action bar is not supported");
+                }
                 adapter = ArrayAdapter.createFromResource(this, R.array.multiplication, android.R.layout.simple_spinner_item);
                 adapter2 = ArrayAdapter.createFromResource(this, R.array.multiplication2, android.R.layout.simple_spinner_item);
                 answer.setInputType(InputType.TYPE_CLASS_DATETIME);
                 answer.setKeyListener(DigitsKeyListener.getInstance("01."));
                 break;
             case 2:
+                try {
+                    getSupportActionBar().setTitle(R.string.action_bar_number_systems);
+                } catch (NullPointerException e) {
+                    Log.d("", "Action bar is not supported");
+                }
                 adapter = ArrayAdapter.createFromResource(this, R.array.number_systems, android.R.layout.simple_spinner_item);
                 adapter2 = ArrayAdapter.createFromResource(this, R.array.number_systems1, android.R.layout.simple_spinner_item);
                 answer.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
                 //answer.setKeyListener(DigitsKeyListener.getInstance("0123456789ABCDEF.,"));
                 break;
             case 3:
+                try {
+                    getSupportActionBar().setTitle(R.string.action_bar_lecture);
+                } catch (NullPointerException e) {
+                    Log.d("", "Action bar is not supported");
+                }
                 setContentView(R.layout.lecture);
                 tv = (TextView) findViewById(R.id.textView);
                 items = (Spinner) findViewById(R.id.items);
                 break;
             case 4:
+                try {
+                    getSupportActionBar().setTitle(R.string.action_bar_statistics);
+                } catch (NullPointerException e) {
+                    Log.d("", "Action bar is not supported");
+                }
                 setContentView(R.layout.stats);
+                score = (TextView) findViewById(R.id.score);
                 pbar = (ProgressBar) findViewById(R.id.progressBar4);
                 pbar.setMax(100);
                 new bar().execute();
@@ -257,10 +290,22 @@ public class MainActivity extends AppCompatActivity {
     public void itemChanged(int pos) {
         switch(classID) {
             case 0:
-                if (pos == 0)
+                if (pos == 0) {
+                    try {
+                        getSupportActionBar().setTitle(R.string.action_bar_bin_codes);
+                    } catch (NullPointerException e) {
+                        Log.d("", "Action bar is not supported");
+                    }
                     adapter2 = ArrayAdapter.createFromResource(this, R.array.codes, android.R.layout.simple_spinner_item);
-                else
+                }
+                else {
+                    try {
+                        getSupportActionBar().setTitle(R.string.action_bar_bin_sum);
+                    } catch (NullPointerException e) {
+                        Log.d("", "Action bar is not supported");
+                    }
                     adapter2 = ArrayAdapter.createFromResource(this, R.array.sum, android.R.layout.simple_spinner_item);
+                }
                 break;
             case 1:
                 break;
@@ -287,10 +332,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void back(View view) {
+        try {
+            getSupportActionBar().setTitle(R.string.app_name);
+        } catch (NullPointerException e) {
+            Log.d("", "Action bar is not supported");
+        }
         cancelled = true;
         second = false;
         setContentView(R.layout.main);
         tv = (TextView) findViewById(R.id.textView);
+        score = (TextView) findViewById(R.id.score);
         sol = (Button) findViewById(R.id.sol);
         check = (Button) findViewById(R.id.check);
         answer = (EditText) findViewById(R.id.answer);
@@ -300,17 +351,25 @@ public class MainActivity extends AppCompatActivity {
         showDialog(0);
     }
 
+    public void clear(View view) {
+        correct = 0;
+        wrong = 0;
+        pbar.setProgress(0);
+    }
+
     public void btnDec(View view) {
         wrong += 10;
     }
+
     public void btnInc(View view) {
         correct += 10;
     }
+
     public int curProgress() {
         return pbar.getProgress();
     }
 
-    class con extends AsyncTask<Integer, Integer, Integer> {
+    private class con extends AsyncTask<Integer, Integer, Integer> {
         protected void onPreExecute() {
             Log.d("Task", "started");
             resp = "";
@@ -357,46 +416,50 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    class bar extends AsyncTask<Integer, Integer, Integer> {
+    private class bar extends AsyncTask<Integer, Integer, Integer> {
         protected void onPreExecute() {
             Log.d("Task", "started");
             cancelled = false;
+            //if (correct == 0 && wrong == 0)
+                //cancelled = true;//для релиза
+                //score.setText("У вас 0 правильных и 0 неправильных");
         }
         protected Integer doInBackground(Integer... urls) {
+            publishProgress(0);
             while (!cancelled) {
                 if (!second)
                     for (int i = 0; i < (float) correct / (wrong + correct) * 100; i++) {
                         try {
-                            Thread.sleep(50);
+                            Thread.sleep(1);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
                         if (cancelled)
                             break;
-                        publishProgress(i);
+                        publishProgress(i + 1);
                     }
                 else if (curProgress() < (float) correct / (wrong + correct) * 100) {
                     for (int i = curProgress(); i < (float) correct / (wrong + correct) * 100; i++) {
                         try {
-                            Thread.sleep(10);
+                            Thread.sleep(1);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
                         if (cancelled)
                             break;
-                        publishProgress(i);
+                        publishProgress(i + 1);
                     }
                 }
                 else {
                     for (int i = curProgress(); i > (float) correct / (wrong + correct) * 100; i--) {
                         try {
-                            Thread.sleep(10);
+                            Thread.sleep(1);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
                         if (cancelled)
                             break;
-                        publishProgress(i);
+                        publishProgress(i + 1);
                     }
                 }
 
@@ -415,6 +478,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onProgressUpdate(Integer... progress) {
             try {
                 pbar.setProgress(progress[0]);
+                score.setText("У вас " + correct + " правильных и " + wrong + " неправильных");
             }catch (NullPointerException e) {
                 e.printStackTrace();
             }
@@ -426,4 +490,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void onStop() {
+        SharedPreferences.Editor correctEditor = savedCorrect.edit();
+        correctEditor.putInt(APP_PREFERENCES_CORRECT, correct);
+        correctEditor.apply();
+
+        SharedPreferences.Editor wrongEditor = savedWrong.edit();
+        wrongEditor.putInt(APP_PREFERENCES_WRONG, wrong);
+        wrongEditor.apply();
+
+        super.onStop();
+    }
 }
