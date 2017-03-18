@@ -18,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,50 +32,51 @@ import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView tv, score;
+    TextView tv, CAStv, MPtv, NStv;
     Button sol, check;
     EditText answer;
     String resp = "", url;
     String[] ans;
-    Spinner items, items2;
-    ProgressBar pbar;
-    int classID, correct, wrong;
+    Spinner spinnerLeft, spinnerRight;
+    ProgressBar CASBar, MPBar, NSBar;
+    int classID, correctCodesAndSum, wrongCodesAndSum, correctMultiplication, wrongMultiplication,
+            correctNumberSystems, wrongNumberSystems;
     ArrayAdapter<?> adapter, adapter2;
     private static long back_pressed;
-    boolean cancelled, second = false;
-    SharedPreferences savedCorrect, savedWrong;
+    boolean cancelled, second;
+    ScrollView sw;
+    SharedPreferences savedCorrectCodesAndSum, savedWrongCodesAndSum, savedCorrectMultiplication,
+            savedWrongMultiplication, savedCorrectNumberSystems, savedWrongNumberSystems;
     public static final String APP_PREFERENCES = "stats";
-    public static final String APP_PREFERENCES_CORRECT = "Correct";
-    public static final String APP_PREFERENCES_WRONG = "Wrong";
+    public static final String APP_PREFERENCES_CORRECT_CAS = "CorrectCAS";
+    public static final String APP_PREFERENCES_WRONG_CAS = "WrongCAS";
+    public static final String APP_PREFERENCES_CORRECT_MP = "CorrectMP";
+    public static final String APP_PREFERENCES_WRONG_MP = "WrongMP";
+    public static final String APP_PREFERENCES_CORRECT_NS = "CorrectNS";
+    public static final String APP_PREFERENCES_WRONG_NS = "WrongNS";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.main);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
-        savedCorrect = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
-        correct = savedCorrect.getInt(APP_PREFERENCES_CORRECT, 0);
-        savedWrong = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
-        wrong = savedWrong.getInt(APP_PREFERENCES_WRONG, 0);
-
-        /*tv = (TextView) findViewById(R.id.textView);
-        sol = (Button) findViewById(R.id.sol);
-        check = (Button) findViewById(R.id.check);
-        answer = (EditText) findViewById(R.id.answer);
-        items = (Spinner) findViewById(R.id.items);
-        items2 = (Spinner) findViewById(R.id.items2);
-        showDialog(0);*/
         back(new View(this));
-        /*items.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> parent,
-                                       View itemSelected, int selectedItemPosition, long selectedId) {
-                tv.setText(selectedItemPosition + "");
-            }
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });*/
+
+        savedCorrectCodesAndSum = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        correctCodesAndSum = savedCorrectCodesAndSum.getInt(APP_PREFERENCES_CORRECT_CAS, 0);
+        savedWrongCodesAndSum = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        wrongCodesAndSum = savedWrongCodesAndSum.getInt(APP_PREFERENCES_WRONG_CAS, 0);
+
+        savedCorrectMultiplication = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        correctMultiplication = savedCorrectMultiplication.getInt(APP_PREFERENCES_CORRECT_MP, 0);
+        savedWrongMultiplication = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        wrongMultiplication = savedWrongMultiplication.getInt(APP_PREFERENCES_WRONG_MP, 0);
+
+        savedCorrectNumberSystems = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        correctNumberSystems = savedCorrectNumberSystems.getInt(APP_PREFERENCES_CORRECT_NS, 0);
+        savedWrongNumberSystems = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        wrongNumberSystems = savedWrongNumberSystems.getInt(APP_PREFERENCES_WRONG_NS, 0);
     }
 
     public void get(View view) {
@@ -83,34 +85,34 @@ public class MainActivity extends AppCompatActivity {
         answer.getText().clear();
         //url = "http://10.0.2.2:8081/Project2/?";
         url = "http://1-dot-server-153511.appspot.com/webproject?";
-        //url += classID + "&" + items.getSelectedItemPosition();
-        url += classID + "&";// + items.getSelectedItemPosition();
+        //url += classID + "&" + spinnerLeft.getSelectedItemPosition();
+        url += classID + "&";// + spinnerLeft.getSelectedItemPosition();
         switch (classID) {
             case 0:
-                switch (items.getSelectedItemPosition()) {
+                switch (spinnerLeft.getSelectedItemPosition()) {
                     case 0:
-                        if (items2.getSelectedItemPosition() == 0)
+                        if (spinnerRight.getSelectedItemPosition() == 0)
                             url += 0;
                         else
-                        if (items2.getSelectedItemPosition() == 1)
+                        if (spinnerRight.getSelectedItemPosition() == 1)
                             url += 1;
                         else
                             url += 2;
                         break;
                     case 1:
-                        if (items2.getSelectedItemPosition() == 0)
+                        if (spinnerRight.getSelectedItemPosition() == 0)
                             url += 3;
                         else
                             url += 4;
                         break;
                     case 2:
-                        if (items2.getSelectedItemPosition() == 0)
+                        if (spinnerRight.getSelectedItemPosition() == 0)
                             url += 5;
                         else
                             url += 6;
                         break;
                     case 3:
-                        if (items2.getSelectedItemPosition() == 0)
+                        if (spinnerRight.getSelectedItemPosition() == 0)
                             url += 7;
                         else
                             url += 8;
@@ -118,20 +120,20 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case 1:
-                /*switch (items.getSelectedItemPosition()) {
+                /*switch (spinnerLeft.getSelectedItemPosition()) {
                 }*/
                 url += 0;
                 break;
             case 2:
-                switch (items.getSelectedItemPosition()) {
+                switch (spinnerLeft.getSelectedItemPosition()) {
                     case 0:
-                        if (items2.getSelectedItemPosition() == 0)
+                        if (spinnerRight.getSelectedItemPosition() == 0)
                             url += 0;
                         else
-                        if (items2.getSelectedItemPosition() == 1)
+                        if (spinnerRight.getSelectedItemPosition() == 1)
                             url += 1;
                         else
-                        if (items2.getSelectedItemPosition() == 2)
+                        if (spinnerRight.getSelectedItemPosition() == 2)
                             url += 3;
                         else
                             url += 2;
@@ -143,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
                         url += 5;
                         break;
                     case 3:
-                        if (items2.getSelectedItemPosition() == 0)
+                        if (spinnerRight.getSelectedItemPosition() == 0)
                             url += 7;
                         break;
                     case 4:
@@ -158,14 +160,33 @@ public class MainActivity extends AppCompatActivity {
     public void check(View view) {
         check.setVisibility(View.INVISIBLE);
         sol.setVisibility(View.VISIBLE);
-        //if (!answer.getText().toString().equals("") && ans[2].contains(answer.getText().toString()))
         if (answer.getText().toString().equals(ans[2])) {
             tv.append(getString(R.string.correct_answer));
-            correct++;
+            switch (classID) {
+                case 0:
+                    correctCodesAndSum++;
+                    break;
+                case 1:
+                    correctMultiplication++;
+                    break;
+                case 2:
+                    correctNumberSystems++;
+                    break;
+            }
         }
         else {
             tv.append(getString(R.string.wrong_answer));
-            wrong++;
+            switch (classID) {
+                case 0:
+                    wrongCodesAndSum++;
+                    break;
+                case 1:
+                    wrongMultiplication++;
+                    break;
+                case 2:
+                    wrongNumberSystems++;
+                    break;
+            }
         }
     }
 
@@ -252,7 +273,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 setContentView(R.layout.lecture);
                 tv = (TextView) findViewById(R.id.textView);
-                items = (Spinner) findViewById(R.id.items);
+                spinnerLeft = (Spinner) findViewById(R.id.items);
+                sw = (ScrollView) findViewById(R.id.scrollView2);
                 break;
             case 4:
                 try {
@@ -261,23 +283,29 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("", "Action bar is not supported");
                 }
                 setContentView(R.layout.stats);
-                score = (TextView) findViewById(R.id.score);
-                pbar = (ProgressBar) findViewById(R.id.progressBar4);
-                pbar.setMax(100);
-                new bar().execute();
+                CAStv = (TextView) findViewById(R.id.CAStv);
+                MPtv = (TextView) findViewById(R.id.MPtv);
+                NStv = (TextView) findViewById(R.id.NStv);
+                CASBar = (ProgressBar) findViewById(R.id.CASBar);
+                MPBar = (ProgressBar) findViewById(R.id.MPBar);
+                NSBar = (ProgressBar) findViewById(R.id.NSBar);
+                bar pool1 = new bar(), pool2 = new bar(), pool3 = new bar();
+                pool1.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, 0);
+                pool2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, 1);
+                pool3.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, 2);
                 break;
         }
         if (classID != 3 && classID != 4) {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            items.setAdapter(adapter);
+            spinnerLeft.setAdapter(adapter);
             adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            items2.setAdapter(adapter2);
+            spinnerRight.setAdapter(adapter2);
             tv.setText(R.string.welcome_text);
             answer.getText().clear();
             sol.setVisibility(View.INVISIBLE);
             check.setVisibility(View.INVISIBLE);
         }
-        items.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinnerLeft.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent,
                                        View itemSelected, int selectedItemPosition, long selectedId) {
                 itemChanged(selectedItemPosition);
@@ -326,9 +354,10 @@ public class MainActivity extends AppCompatActivity {
                     tv.setText(R.string.lecture_multiplication);
                 else
                     tv.setText(R.string.lecture_number_systems);
+                sw.scrollTo(0, 0);
                 break;
         }
-        items2.setAdapter(adapter2);
+        spinnerRight.setAdapter(adapter2);
     }
 
     public void back(View view) {
@@ -338,35 +367,68 @@ public class MainActivity extends AppCompatActivity {
             Log.d("", "Action bar is not supported");
         }
         cancelled = true;
-        second = false;
         setContentView(R.layout.main);
         tv = (TextView) findViewById(R.id.textView);
-        score = (TextView) findViewById(R.id.score);
         sol = (Button) findViewById(R.id.sol);
         check = (Button) findViewById(R.id.check);
         answer = (EditText) findViewById(R.id.answer);
-        items = (Spinner) findViewById(R.id.items);
-        items2 = (Spinner) findViewById(R.id.items2);
-        pbar = (ProgressBar) findViewById(R.id.progressBar4);
+        spinnerLeft = (Spinner) findViewById(R.id.items);
+        spinnerRight = (Spinner) findViewById(R.id.items2);
         showDialog(0);
     }
 
     public void clear(View view) {
-        correct = 0;
-        wrong = 0;
-        pbar.setProgress(0);
+        correctCodesAndSum = 0;
+        wrongCodesAndSum = 0;
+        correctMultiplication = 0;
+        wrongMultiplication = 0;
+        correctNumberSystems = 0;
+        wrongNumberSystems = 0;
+        CASBar.setProgress(0);
+        MPBar.setProgress(0);
+        NSBar.setProgress(0);
     }
 
-    public void btnDec(View view) {
-        wrong += 10;
+    public void btnDec1(View view) {
+        wrongCodesAndSum += 10;
     }
 
-    public void btnInc(View view) {
-        correct += 10;
+    public void btnInc1(View view) {
+        correctCodesAndSum += 10;
     }
 
-    public int curProgress() {
-        return pbar.getProgress();
+    public void btnDec2(View view) {
+        wrongMultiplication += 10;
+    }
+
+    public void btnInc2(View view) {
+        correctMultiplication += 10;
+    }
+
+    public void btnDec3(View view) {
+        wrongNumberSystems += 10;
+    }
+
+    public void btnInc3(View view) {
+        correctNumberSystems += 10;
+    }
+
+    public int curProgress(Integer id) {
+        ProgressBar bar;
+        switch (id) {
+            case 0:
+                bar = CASBar;
+                break;
+            case 1:
+                bar = MPBar;
+                break;
+            case 2:
+                bar = NSBar;
+                break;
+            default:
+                bar = CASBar;
+        }
+        return bar.getProgress();
     }
 
     private class con extends AsyncTask<Integer, Integer, Integer> {
@@ -417,18 +479,43 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private class bar extends AsyncTask<Integer, Integer, Integer> {
+        TextView curtv;
+        ProgressBar curBar;
+        int curCorrect, curWrong;
+        String curText;
         protected void onPreExecute() {
             Log.d("Task", "started");
             cancelled = false;
-            //if (correct == 0 && wrong == 0)
-                //cancelled = true;//для релиза
-                //score.setText("У вас 0 правильных и 0 неправильных");
+            second = false;
         }
         protected Integer doInBackground(Integer... urls) {
             publishProgress(0);
             while (!cancelled) {
+                switch (urls[0]) {
+                    case 0:
+                        curtv = CAStv;
+                        curBar = CASBar;
+                        curCorrect = correctCodesAndSum;
+                        curWrong = wrongCodesAndSum;
+                        curText = getString(R.string.stats_codes_and_sum);
+                        break;
+                    case 1:
+                        curtv = MPtv;
+                        curBar = MPBar;
+                        curCorrect = correctMultiplication;
+                        curWrong = wrongMultiplication;
+                        curText = getString(R.string.stats_multiplication);
+                        break;
+                    case 2:
+                        curtv = NStv;
+                        curBar = NSBar;
+                        curCorrect = correctNumberSystems;
+                        curWrong = wrongNumberSystems;
+                        curText = getString(R.string.stats_number_systems);
+                        break;
+                }
                 if (!second)
-                    for (int i = 0; i < (float) correct / (wrong + correct) * 100; i++) {
+                    for (int i = 0; i < (float) curCorrect / (curWrong + curCorrect) * 100; i++) {
                         try {
                             Thread.sleep(1);
                         } catch (InterruptedException e) {
@@ -438,8 +525,8 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         publishProgress(i + 1);
                     }
-                else if (curProgress() < (float) correct / (wrong + correct) * 100) {
-                    for (int i = curProgress(); i < (float) correct / (wrong + correct) * 100; i++) {
+                else if (curProgress(urls[0]) < (float) curCorrect / (curWrong + curCorrect) * 100) {
+                    for (int i = curProgress(urls[0]); i < (float) curCorrect / (curWrong + curCorrect) * 100; i++) {
                         try {
                             Thread.sleep(1);
                         } catch (InterruptedException e) {
@@ -451,7 +538,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
                 else {
-                    for (int i = curProgress(); i > (float) correct / (wrong + correct) * 100; i--) {
+                    for (int i = curProgress(urls[0]); i > (float) curCorrect / (curWrong + curCorrect) * 100; i--) {
                         try {
                             Thread.sleep(1);
                         } catch (InterruptedException e) {
@@ -466,19 +553,13 @@ public class MainActivity extends AppCompatActivity {
                 second = true;
             }
 
-            /*while (true) {
-                if (cancelled)
-                    break;
-                publishProgress(round((float)correct/(wrong+correct)*100));
-            }*/
-
             return 1;
         }
 
         protected void onProgressUpdate(Integer... progress) {
             try {
-                pbar.setProgress(progress[0]);
-                score.setText("У вас " + correct + " правильных и " + wrong + " неправильных");
+                curBar.setProgress(progress[0]);
+                curtv.setText(curText + " " + curCorrect + "/" + curWrong);
             }catch (NullPointerException e) {
                 e.printStackTrace();
             }
@@ -491,13 +572,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onStop() {
-        SharedPreferences.Editor correctEditor = savedCorrect.edit();
-        correctEditor.putInt(APP_PREFERENCES_CORRECT, correct);
-        correctEditor.apply();
+        SharedPreferences.Editor correctCESEditor = savedCorrectCodesAndSum.edit();
+        correctCESEditor.putInt(APP_PREFERENCES_CORRECT_CAS, correctCodesAndSum);
+        correctCESEditor.apply();
 
-        SharedPreferences.Editor wrongEditor = savedWrong.edit();
-        wrongEditor.putInt(APP_PREFERENCES_WRONG, wrong);
-        wrongEditor.apply();
+        SharedPreferences.Editor wrongCESEditor = savedWrongCodesAndSum.edit();
+        wrongCESEditor.putInt(APP_PREFERENCES_WRONG_CAS, wrongCodesAndSum);
+        wrongCESEditor.apply();
+
+        SharedPreferences.Editor correctMPEditor = savedCorrectMultiplication.edit();
+        correctMPEditor.putInt(APP_PREFERENCES_CORRECT_MP, correctMultiplication);
+        correctMPEditor.apply();
+
+        SharedPreferences.Editor wrongMPEditor = savedWrongMultiplication.edit();
+        wrongMPEditor.putInt(APP_PREFERENCES_WRONG_MP, wrongMultiplication);
+        wrongMPEditor.apply();
+
+        SharedPreferences.Editor correctNSEditor = savedCorrectNumberSystems.edit();
+        correctNSEditor.putInt(APP_PREFERENCES_CORRECT_NS, correctNumberSystems);
+        correctNSEditor.apply();
+
+        SharedPreferences.Editor wrongNSEditor = savedWrongNumberSystems.edit();
+        wrongNSEditor.putInt(APP_PREFERENCES_WRONG_NS, wrongNumberSystems);
+        wrongNSEditor.apply();
 
         super.onStop();
     }

@@ -55,8 +55,8 @@
       <file leaf-file-name="main.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/main.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="18" column="38" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
+            <state relative-caret-position="2006">
+              <caret line="118" column="46" selection-start-line="118" selection-start-column="46" selection-end-line="118" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -68,14 +68,9 @@
       <file leaf-file-name="stats.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/stats.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="90" column="30" selection-start-line="90" selection-start-column="30" selection-end-line="90" selection-end-column="30" />
-              <folding>
-                <element signature="e#1513#2210#0" expanded="false" />
-                <element signature="e#2216#2608#0" expanded="false" />
-                <element signature="e#2614#3007#0" expanded="false" />
-                <element signature="e#3154#3169#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="391">
+              <caret line="52" column="56" selection-start-line="52" selection-start-column="56" selection-end-line="52" selection-end-column="56" />
+              <folding />
             </state>
           </provider>
           <provider editor-type-id="android-designer2">
@@ -86,14 +81,24 @@
       <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="177" column="53" selection-start-line="177" selection-start-column="53" selection-end-line="177" selection-end-column="53" />
+            <state relative-caret-position="289">
+              <caret line="181" column="52" selection-start-line="181" selection-start-column="52" selection-end-line="181" selection-end-column="52" />
               <folding>
                 <element signature="e#364#607#0" expanded="false" />
                 <element signature="e#682#834#0" expanded="false" />
                 <element signature="e#957#3469#0" expanded="false" />
                 <element signature="e#3474#8256#0" expanded="false" />
                 <element signature="e#8261#11781#0" expanded="false" />
+                <element signature="e#12452#12617#0" expanded="false" />
+                <element signature="e#12622#12799#0" expanded="false" />
+                <element signature="e#12804#12957#0" expanded="false" />
+                <element signature="e#12962#13087#0" expanded="false" />
+                <element signature="e#13092#13176#0" expanded="false" />
+                <element signature="e#13181#13266#0" expanded="false" />
+                <element signature="e#13271#13459#0" expanded="false" />
+                <element signature="e#13464#13623#0" expanded="false" />
+                <element signature="e#13628#13710#0" expanded="false" />
+                <element signature="e#13715#14154#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -102,8 +107,8 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dill/project/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="40" column="32" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
+            <state relative-caret-position="136">
+              <caret line="36" column="20" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
               <folding>
                 <element signature="method#onCreate#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#get#0;class#MainActivity#0" expanded="false" />
@@ -115,6 +120,7 @@
                 <element signature="method#itemChanged#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#back#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#clear#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#curProgress#0;class#MainActivity#0" expanded="false" />
                 <element signature="class#con#0;class#MainActivity#0" expanded="false" />
                 <element signature="class#bar#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#onStop#0;class#MainActivity#0" expanded="false" />
@@ -1789,13 +1795,13 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values-w820dp/dimens.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/lecture.JSON" />
         <option value="$PROJECT_DIR$/app/src/main/res/json/lecture.JSON" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/stats.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/lecture.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/dill/project/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/stats.xml" />
       </list>
     </option>
   </component>
@@ -1830,6 +1836,29 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="AndroidView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Gradle Scripts" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidBuildScriptsGroupNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="ProjectPane" />
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -1894,65 +1923,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="AndroidView">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Project" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Gradle Scripts" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidBuildScriptsGroupNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Project" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Project" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Project" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
-      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2348,10 +2318,10 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5030257" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.4969743" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29362416" sideWeight="0.4969743" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.4969743" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -2361,8 +2331,8 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -2373,7 +2343,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -2394,7 +2364,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="6" />
+      <option name="time" value="8" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -2425,6 +2395,7 @@
             <element signature="method#itemChanged#0;class#MainActivity#0" expanded="false" />
             <element signature="method#back#0;class#MainActivity#0" expanded="false" />
             <element signature="method#clear#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#curProgress#0;class#MainActivity#0" expanded="false" />
             <element signature="class#con#0;class#MainActivity#0" expanded="false" />
             <element signature="class#bar#0;class#MainActivity#0" expanded="false" />
             <element signature="method#onStop#0;class#MainActivity#0" expanded="false" />
@@ -2442,6 +2413,16 @@
             <element signature="e#957#3469#0" expanded="false" />
             <element signature="e#3474#8256#0" expanded="false" />
             <element signature="e#8261#11781#0" expanded="false" />
+            <element signature="e#12452#12617#0" expanded="false" />
+            <element signature="e#12622#12799#0" expanded="false" />
+            <element signature="e#12804#12957#0" expanded="false" />
+            <element signature="e#12962#13087#0" expanded="false" />
+            <element signature="e#13092#13176#0" expanded="false" />
+            <element signature="e#13181#13266#0" expanded="false" />
+            <element signature="e#13271#13459#0" expanded="false" />
+            <element signature="e#13464#13623#0" expanded="false" />
+            <element signature="e#13628#13710#0" expanded="false" />
+            <element signature="e#13715#14154#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2472,6 +2453,7 @@
             <element signature="method#itemChanged#0;class#MainActivity#0" expanded="false" />
             <element signature="method#back#0;class#MainActivity#0" expanded="false" />
             <element signature="method#clear#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#curProgress#0;class#MainActivity#0" expanded="false" />
             <element signature="class#con#0;class#MainActivity#0" expanded="false" />
             <element signature="class#bar#0;class#MainActivity#0" expanded="false" />
             <element signature="method#onStop#0;class#MainActivity#0" expanded="false" />
@@ -2489,6 +2471,16 @@
             <element signature="e#957#3469#0" expanded="false" />
             <element signature="e#3474#8256#0" expanded="false" />
             <element signature="e#8261#11781#0" expanded="false" />
+            <element signature="e#12452#12617#0" expanded="false" />
+            <element signature="e#12622#12799#0" expanded="false" />
+            <element signature="e#12804#12957#0" expanded="false" />
+            <element signature="e#12962#13087#0" expanded="false" />
+            <element signature="e#13092#13176#0" expanded="false" />
+            <element signature="e#13181#13266#0" expanded="false" />
+            <element signature="e#13271#13459#0" expanded="false" />
+            <element signature="e#13464#13623#0" expanded="false" />
+            <element signature="e#13628#13710#0" expanded="false" />
+            <element signature="e#13715#14154#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2519,6 +2511,7 @@
             <element signature="method#itemChanged#0;class#MainActivity#0" expanded="false" />
             <element signature="method#back#0;class#MainActivity#0" expanded="false" />
             <element signature="method#clear#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#curProgress#0;class#MainActivity#0" expanded="false" />
             <element signature="class#con#0;class#MainActivity#0" expanded="false" />
             <element signature="class#bar#0;class#MainActivity#0" expanded="false" />
             <element signature="method#onStop#0;class#MainActivity#0" expanded="false" />
@@ -2552,6 +2545,7 @@
             <element signature="method#itemChanged#0;class#MainActivity#0" expanded="false" />
             <element signature="method#back#0;class#MainActivity#0" expanded="false" />
             <element signature="method#clear#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#curProgress#0;class#MainActivity#0" expanded="false" />
             <element signature="class#con#0;class#MainActivity#0" expanded="false" />
             <element signature="class#bar#0;class#MainActivity#0" expanded="false" />
             <element signature="method#onStop#0;class#MainActivity#0" expanded="false" />
@@ -2585,6 +2579,7 @@
             <element signature="method#itemChanged#0;class#MainActivity#0" expanded="false" />
             <element signature="method#back#0;class#MainActivity#0" expanded="false" />
             <element signature="method#clear#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#curProgress#0;class#MainActivity#0" expanded="false" />
             <element signature="class#con#0;class#MainActivity#0" expanded="false" />
             <element signature="class#bar#0;class#MainActivity#0" expanded="false" />
             <element signature="method#onStop#0;class#MainActivity#0" expanded="false" />
@@ -2618,6 +2613,7 @@
             <element signature="method#itemChanged#0;class#MainActivity#0" expanded="false" />
             <element signature="method#back#0;class#MainActivity#0" expanded="false" />
             <element signature="method#clear#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#curProgress#0;class#MainActivity#0" expanded="false" />
             <element signature="class#con#0;class#MainActivity#0" expanded="false" />
             <element signature="class#bar#0;class#MainActivity#0" expanded="false" />
             <element signature="method#onStop#0;class#MainActivity#0" expanded="false" />
@@ -2651,6 +2647,7 @@
             <element signature="method#itemChanged#0;class#MainActivity#0" expanded="false" />
             <element signature="method#back#0;class#MainActivity#0" expanded="false" />
             <element signature="method#clear#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#curProgress#0;class#MainActivity#0" expanded="false" />
             <element signature="class#con#0;class#MainActivity#0" expanded="false" />
             <element signature="class#bar#0;class#MainActivity#0" expanded="false" />
             <element signature="method#onStop#0;class#MainActivity#0" expanded="false" />
@@ -2684,6 +2681,7 @@
             <element signature="method#itemChanged#0;class#MainActivity#0" expanded="false" />
             <element signature="method#back#0;class#MainActivity#0" expanded="false" />
             <element signature="method#clear#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#curProgress#0;class#MainActivity#0" expanded="false" />
             <element signature="class#con#0;class#MainActivity#0" expanded="false" />
             <element signature="class#bar#0;class#MainActivity#0" expanded="false" />
             <element signature="method#onStop#0;class#MainActivity#0" expanded="false" />
@@ -2717,6 +2715,7 @@
             <element signature="method#itemChanged#0;class#MainActivity#0" expanded="false" />
             <element signature="method#back#0;class#MainActivity#0" expanded="false" />
             <element signature="method#clear#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#curProgress#0;class#MainActivity#0" expanded="false" />
             <element signature="class#con#0;class#MainActivity#0" expanded="false" />
             <element signature="class#bar#0;class#MainActivity#0" expanded="false" />
             <element signature="method#onStop#0;class#MainActivity#0" expanded="false" />
@@ -2750,6 +2749,7 @@
             <element signature="method#itemChanged#0;class#MainActivity#0" expanded="false" />
             <element signature="method#back#0;class#MainActivity#0" expanded="false" />
             <element signature="method#clear#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#curProgress#0;class#MainActivity#0" expanded="false" />
             <element signature="class#con#0;class#MainActivity#0" expanded="false" />
             <element signature="class#bar#0;class#MainActivity#0" expanded="false" />
             <element signature="method#onStop#0;class#MainActivity#0" expanded="false" />
@@ -2794,6 +2794,7 @@
             <element signature="method#itemChanged#0;class#MainActivity#0" expanded="false" />
             <element signature="method#back#0;class#MainActivity#0" expanded="false" />
             <element signature="method#clear#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#curProgress#0;class#MainActivity#0" expanded="false" />
             <element signature="class#con#0;class#MainActivity#0" expanded="false" />
             <element signature="class#bar#0;class#MainActivity#0" expanded="false" />
             <element signature="method#onStop#0;class#MainActivity#0" expanded="false" />
@@ -2827,6 +2828,7 @@
             <element signature="method#itemChanged#0;class#MainActivity#0" expanded="false" />
             <element signature="method#back#0;class#MainActivity#0" expanded="false" />
             <element signature="method#clear#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#curProgress#0;class#MainActivity#0" expanded="false" />
             <element signature="class#con#0;class#MainActivity#0" expanded="false" />
             <element signature="class#bar#0;class#MainActivity#0" expanded="false" />
             <element signature="method#onStop#0;class#MainActivity#0" expanded="false" />
@@ -2860,49 +2862,7 @@
             <element signature="method#itemChanged#0;class#MainActivity#0" expanded="false" />
             <element signature="method#back#0;class#MainActivity#0" expanded="false" />
             <element signature="method#clear#0;class#MainActivity#0" expanded="false" />
-            <element signature="class#con#0;class#MainActivity#0" expanded="false" />
-            <element signature="class#bar#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onStop#0;class#MainActivity#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="66" selection-start-line="19" selection-start-column="66" selection-end-line="19" selection-end-column="66" />
-          <folding>
-            <element signature="e#258#276#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="44" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dill/project/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="method#onCreate#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#get#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#check#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#sol#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onBackPressed#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onCreateDialog#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#choose#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#itemChanged#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#back#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#clear#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#curProgress#0;class#MainActivity#0" expanded="false" />
             <element signature="class#con#0;class#MainActivity#0" expanded="false" />
             <element signature="class#bar#0;class#MainActivity#0" expanded="false" />
             <element signature="method#onStop#0;class#MainActivity#0" expanded="false" />
@@ -2946,6 +2906,51 @@
             <element signature="method#itemChanged#0;class#MainActivity#0" expanded="false" />
             <element signature="method#back#0;class#MainActivity#0" expanded="false" />
             <element signature="method#clear#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#curProgress#0;class#MainActivity#0" expanded="false" />
+            <element signature="class#con#0;class#MainActivity#0" expanded="false" />
+            <element signature="class#bar#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onStop#0;class#MainActivity#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="66" selection-start-line="19" selection-start-column="66" selection-end-line="19" selection-end-column="66" />
+          <folding>
+            <element signature="e#258#276#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="44" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dill/project/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="method#onCreate#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#get#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#check#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#sol#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onBackPressed#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onCreateDialog#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#choose#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#itemChanged#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#back#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#clear#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#curProgress#0;class#MainActivity#0" expanded="false" />
             <element signature="class#con#0;class#MainActivity#0" expanded="false" />
             <element signature="class#bar#0;class#MainActivity#0" expanded="false" />
             <element signature="method#onStop#0;class#MainActivity#0" expanded="false" />
@@ -2978,7 +2983,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="47" selection-start-line="4" selection-start-column="47" selection-end-line="4" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2986,7 +2990,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3029,10 +3032,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/lecture.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="40" column="37" selection-start-line="40" selection-start-column="37" selection-end-line="40" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/main.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="18" column="38" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
+        <state relative-caret-position="2006">
+          <caret line="118" column="46" selection-start-line="118" selection-start-column="46" selection-end-line="118" selection-end-column="46" />
           <folding />
         </state>
       </provider>
@@ -3042,38 +3056,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="177" column="53" selection-start-line="177" selection-start-column="53" selection-end-line="177" selection-end-column="53" />
+        <state relative-caret-position="289">
+          <caret line="181" column="52" selection-start-line="181" selection-start-column="52" selection-end-line="181" selection-end-column="52" />
           <folding>
             <element signature="e#364#607#0" expanded="false" />
             <element signature="e#682#834#0" expanded="false" />
             <element signature="e#957#3469#0" expanded="false" />
             <element signature="e#3474#8256#0" expanded="false" />
             <element signature="e#8261#11781#0" expanded="false" />
+            <element signature="e#12452#12617#0" expanded="false" />
+            <element signature="e#12622#12799#0" expanded="false" />
+            <element signature="e#12804#12957#0" expanded="false" />
+            <element signature="e#12962#13087#0" expanded="false" />
+            <element signature="e#13092#13176#0" expanded="false" />
+            <element signature="e#13181#13266#0" expanded="false" />
+            <element signature="e#13271#13459#0" expanded="false" />
+            <element signature="e#13464#13623#0" expanded="false" />
+            <element signature="e#13628#13710#0" expanded="false" />
+            <element signature="e#13715#14154#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/stats.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="90" column="30" selection-start-line="90" selection-start-column="30" selection-end-line="90" selection-end-column="30" />
-          <folding>
-            <element signature="e#1513#2210#0" expanded="false" />
-            <element signature="e#2216#2608#0" expanded="false" />
-            <element signature="e#2614#3007#0" expanded="false" />
-            <element signature="e#3154#3169#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/lecture.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+        <state relative-caret-position="391">
+          <caret line="52" column="56" selection-start-line="52" selection-start-column="56" selection-end-line="52" selection-end-column="56" />
           <folding />
         </state>
       </provider>
@@ -3083,8 +3091,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dill/project/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="40" column="32" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
+        <state relative-caret-position="136">
+          <caret line="36" column="20" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
           <folding>
             <element signature="method#onCreate#0;class#MainActivity#0" expanded="false" />
             <element signature="method#get#0;class#MainActivity#0" expanded="false" />
@@ -3096,6 +3104,7 @@
             <element signature="method#itemChanged#0;class#MainActivity#0" expanded="false" />
             <element signature="method#back#0;class#MainActivity#0" expanded="false" />
             <element signature="method#clear#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#curProgress#0;class#MainActivity#0" expanded="false" />
             <element signature="class#con#0;class#MainActivity#0" expanded="false" />
             <element signature="class#bar#0;class#MainActivity#0" expanded="false" />
             <element signature="method#onStop#0;class#MainActivity#0" expanded="false" />

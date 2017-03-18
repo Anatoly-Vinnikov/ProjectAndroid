@@ -179,6 +179,9 @@
     <string name="action_bar_statistics">Статистика</string>
     <string name="action_bar_bin_sum">Двоичное сложение</string>
     <string name="clear">Сбросить</string>
+    <string name="stats_codes_and_sum">Коды и сумма:</string>
+    <string name="stats_multiplication">Произведение:</string>
+    <string name="stats_number_systems">Системы счисления:</string>
     <string-array name="lecture">
         <item>Коды и сумма</item>
         <item>Умножение</item>
@@ -222,6 +225,20 @@
         <item>В 2</item>
     </string-array>
     <string-array name="number_systems3">
-        <item>В N(2)</item>
+        <item>В 2</item>
+        <item>В 3</item>
+        <item>В 4</item>
+        <item>В 5</item>
+        <item>В 6</item>
+        <item>В 7</item>
+        <item>В 8</item>
+        <item>В 9</item>
+        <item>В 10</item>
+        <item>В 11</item>
+        <item>В 12</item>
+        <item>В 13</item>
+        <item>В 14</item>
+        <item>В 15</item>
+        <item>В 16</item>
     </string-array>
 </resources>
