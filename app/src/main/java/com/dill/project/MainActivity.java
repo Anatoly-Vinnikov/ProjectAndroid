@@ -7,10 +7,14 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.text.method.DigitsKeyListener;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -29,6 +33,8 @@ import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             correctNumberSystems, wrongNumberSystems;
     ArrayAdapter<?> adapter, adapter2;
     private static long back_pressed;
-    boolean cancelled, second;
+    boolean cancelled, hideMenu;
     ScrollView sw;
     SharedPreferences savedCorrectCodesAndSum, savedWrongCodesAndSum, savedCorrectMultiplication,
             savedWrongMultiplication, savedCorrectNumberSystems, savedWrongNumberSystems;
@@ -85,8 +91,7 @@ public class MainActivity extends AppCompatActivity {
         answer.getText().clear();
         //url = "http://10.0.2.2:8081/Project2/?";
         url = "http://1-dot-server-153511.appspot.com/webproject?";
-        //url += classID + "&" + spinnerLeft.getSelectedItemPosition();
-        url += classID + "&";// + spinnerLeft.getSelectedItemPosition();
+        url += classID + "&";
         switch (classID) {
             case 0:
                 switch (spinnerLeft.getSelectedItemPosition()) {
@@ -196,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void menu(View view) {
-        showDialog(0);
+        showDialog(1);
     }
 
     @Override
@@ -214,7 +219,7 @@ public class MainActivity extends AppCompatActivity {
             case 0:
                 final String[] choose ={"Коды и сумма", "Произведение", "Системы счисления", "Теория", "Статистика"};
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle("Выберите, что решать");
+                builder.setTitle("Меню");
 
                 builder.setItems(choose, new DialogInterface.OnClickListener() {
                     @Override
@@ -225,6 +230,20 @@ public class MainActivity extends AppCompatActivity {
                 });
                 builder.setCancelable(false);
                 return builder.create();
+            case 1:
+                final String[] choose1 ={"Коды и сумма", "Произведение", "Системы счисления", "Теория", "Статистика"};
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+                builder1.setTitle("Меню");
+
+                builder1.setItems(choose1, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int item) {
+                        classID = item;
+                        choose();
+                    }
+                });
+                builder1.setCancelable(true);
+                return builder1.create();
             default:
                 return null;
         }
@@ -305,6 +324,16 @@ public class MainActivity extends AppCompatActivity {
             sol.setVisibility(View.INVISIBLE);
             check.setVisibility(View.INVISIBLE);
         }
+        else {
+            try {
+                getSupportActionBar().setHomeButtonEnabled(true);
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            } catch (NullPointerException e) {
+                Log.d("", "Action bar is not supported");
+            }
+            hideMenu = true;
+            invalidateOptionsMenu();
+        }
         spinnerLeft.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent,
                                        View itemSelected, int selectedItemPosition, long selectedId) {
@@ -313,6 +342,25 @@ public class MainActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        if (hideMenu)
+            menu.getItem(0).setVisible(false);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                back(new View(this));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     public void itemChanged(int pos) {
@@ -363,10 +411,33 @@ public class MainActivity extends AppCompatActivity {
     public void back(View view) {
         try {
             getSupportActionBar().setTitle(R.string.app_name);
+            getSupportActionBar().setHomeButtonEnabled(false);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         } catch (NullPointerException e) {
             Log.d("", "Action bar is not supported");
         }
+        getSupportActionBar().addOnMenuVisibilityListener(new ActionBar.OnMenuVisibilityListener() {
+            @Override
+            public void onMenuVisibilityChanged(boolean isVisible) {
+                if (isVisible) {
+                    showDialog(1);
+                    hideMenu = true;
+                    invalidateOptionsMenu();
+                    Timer timing = new Timer();
+                    timing.schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            //closeOptionsMenu();
+                            hideMenu = false;
+                            invalidateOptionsMenu();
+                        }
+                    }, 200);
+                }
+            }
+        });
         cancelled = true;
+        hideMenu = false;
+        invalidateOptionsMenu();
         setContentView(R.layout.main);
         tv = (TextView) findViewById(R.id.textView);
         sol = (Button) findViewById(R.id.sol);
@@ -378,57 +449,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clear(View view) {
+        cancelled = true;
         correctCodesAndSum = 0;
         wrongCodesAndSum = 0;
         correctMultiplication = 0;
         wrongMultiplication = 0;
         correctNumberSystems = 0;
         wrongNumberSystems = 0;
+        CAStv.setText(getString(R.string.stats_codes_and_sum) + " " + correctCodesAndSum + "/" + wrongCodesAndSum);
+        MPtv.setText(getString(R.string.stats_multiplication) + " " + correctMultiplication + "/" + wrongMultiplication);
+        NStv.setText(getString(R.string.stats_number_systems) + " " + correctNumberSystems + "/" + wrongNumberSystems);
         CASBar.setProgress(0);
         MPBar.setProgress(0);
         NSBar.setProgress(0);
-    }
-
-    public void btnDec1(View view) {
-        wrongCodesAndSum += 10;
-    }
-
-    public void btnInc1(View view) {
-        correctCodesAndSum += 10;
-    }
-
-    public void btnDec2(View view) {
-        wrongMultiplication += 10;
-    }
-
-    public void btnInc2(View view) {
-        correctMultiplication += 10;
-    }
-
-    public void btnDec3(View view) {
-        wrongNumberSystems += 10;
-    }
-
-    public void btnInc3(View view) {
-        correctNumberSystems += 10;
-    }
-
-    public int curProgress(Integer id) {
-        ProgressBar bar;
-        switch (id) {
-            case 0:
-                bar = CASBar;
-                break;
-            case 1:
-                bar = MPBar;
-                break;
-            case 2:
-                bar = NSBar;
-                break;
-            default:
-                bar = CASBar;
-        }
-        return bar.getProgress();
     }
 
     private class con extends AsyncTask<Integer, Integer, Integer> {
@@ -438,20 +471,6 @@ public class MainActivity extends AppCompatActivity {
             tv.setText(R.string.server_answer);
         }
         protected Integer doInBackground(Integer... urls) {
-            /*try {
-                URL url = new URL("http://10.0.2.2:8081/Project2/");
-                URLConnection connection = url.openConnection();
-                BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                String returnString = "";
-                while ((returnString = in.readLine()) != null)
-                {
-                    resp += returnString;
-                }
-                in.close();
-            } catch (IOException e) {
-                Log.d("", "Connection error");
-            }*/
-
             try {
                 DefaultHttpClient hc = new DefaultHttpClient();
                 ResponseHandler response = new BasicResponseHandler();
@@ -486,71 +505,41 @@ public class MainActivity extends AppCompatActivity {
         protected void onPreExecute() {
             Log.d("Task", "started");
             cancelled = false;
-            second = false;
         }
         protected Integer doInBackground(Integer... urls) {
+            switch (urls[0]) {
+                case 0:
+                    curtv = CAStv;
+                    curBar = CASBar;
+                    curCorrect = correctCodesAndSum;
+                    curWrong = wrongCodesAndSum;
+                    curText = getString(R.string.stats_codes_and_sum);
+                    break;
+                case 1:
+                    curtv = MPtv;
+                    curBar = MPBar;
+                    curCorrect = correctMultiplication;
+                    curWrong = wrongMultiplication;
+                    curText = getString(R.string.stats_multiplication);
+                    break;
+                case 2:
+                    curtv = NStv;
+                    curBar = NSBar;
+                    curCorrect = correctNumberSystems;
+                    curWrong = wrongNumberSystems;
+                    curText = getString(R.string.stats_number_systems);
+                    break;
+            }
             publishProgress(0);
-            while (!cancelled) {
-                switch (urls[0]) {
-                    case 0:
-                        curtv = CAStv;
-                        curBar = CASBar;
-                        curCorrect = correctCodesAndSum;
-                        curWrong = wrongCodesAndSum;
-                        curText = getString(R.string.stats_codes_and_sum);
-                        break;
-                    case 1:
-                        curtv = MPtv;
-                        curBar = MPBar;
-                        curCorrect = correctMultiplication;
-                        curWrong = wrongMultiplication;
-                        curText = getString(R.string.stats_multiplication);
-                        break;
-                    case 2:
-                        curtv = NStv;
-                        curBar = NSBar;
-                        curCorrect = correctNumberSystems;
-                        curWrong = wrongNumberSystems;
-                        curText = getString(R.string.stats_number_systems);
-                        break;
+            for (int i = 0; i < (float) curCorrect / (curWrong + curCorrect) * 100; i++) {
+                if (cancelled)
+                    break;
+                try {
+                    Thread.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
-                if (!second)
-                    for (int i = 0; i < (float) curCorrect / (curWrong + curCorrect) * 100; i++) {
-                        try {
-                            Thread.sleep(1);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        if (cancelled)
-                            break;
-                        publishProgress(i + 1);
-                    }
-                else if (curProgress(urls[0]) < (float) curCorrect / (curWrong + curCorrect) * 100) {
-                    for (int i = curProgress(urls[0]); i < (float) curCorrect / (curWrong + curCorrect) * 100; i++) {
-                        try {
-                            Thread.sleep(1);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        if (cancelled)
-                            break;
-                        publishProgress(i + 1);
-                    }
-                }
-                else {
-                    for (int i = curProgress(urls[0]); i > (float) curCorrect / (curWrong + curCorrect) * 100; i--) {
-                        try {
-                            Thread.sleep(1);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        if (cancelled)
-                            break;
-                        publishProgress(i + 1);
-                    }
-                }
-
-                second = true;
+                publishProgress(i + 1);
             }
 
             return 1;
