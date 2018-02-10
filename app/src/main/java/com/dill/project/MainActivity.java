@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
@@ -67,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
-        back(new View(this));
+        back();
 
         savedCorrectCodesAndSum = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         correctCodesAndSum = savedCorrectCodesAndSum.getInt(APP_PREFERENCES_CORRECT_CAS, 0);
@@ -90,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         check.setVisibility(View.INVISIBLE);
         answer.getText().clear();
         //url = "http://10.0.2.2:8081/Project2/?";
-        url = "http://1-dot-server-153511.appspot.com/webproject?";
+        url = "http://server-153511.appspot.com/hello?";
         url += classID + "&";
         switch (classID) {
             case 0:
@@ -125,8 +126,17 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case 1:
-                /*switch (spinnerLeft.getSelectedItemPosition()) {
-                }*/
+                switch (spinnerLeft.getSelectedItemPosition()) {
+                    case 0:
+                        if (spinnerRight.getSelectedItemPosition() == 0)
+                            url += 0;
+                        else
+                            url += 1;
+                        break;
+                    case 1:
+                        url += 2;
+                        break;
+                }
                 url += 0;
                 break;
             case 2:
@@ -150,8 +160,50 @@ public class MainActivity extends AppCompatActivity {
                         url += 5;
                         break;
                     case 3:
-                        if (spinnerRight.getSelectedItemPosition() == 0)
-                            url += 7;
+                        switch (spinnerRight.getSelectedItemPosition()) {
+                            case 0:
+                                url += 7;
+                                break;
+                            case 1:
+                                url += 8;
+                                break;
+                            case 2:
+                                url += 9;
+                                break;
+                            case 3:
+                                url += 10;
+                                break;
+                            case 4:
+                                url += 11;
+                                break;
+                            case 5:
+                                url += 12;
+                                break;
+                            case 6:
+                                url += 13;
+                                break;
+                            case 7:
+                                url += 14;
+                                break;
+                            case 8:
+                                url += 15;
+                                break;
+                            case 9:
+                                url += 16;
+                                break;
+                            case 10:
+                                url += 17;
+                                break;
+                            case 11:
+                                url += 18;
+                                break;
+                            case 12:
+                                url += 19;
+                                break;
+                            case 13:
+                                url += 20;
+                                break;
+                        }
                         break;
                     case 4:
                         url += 6;
@@ -198,10 +250,6 @@ public class MainActivity extends AppCompatActivity {
     public void sol(View view) {
         sol.setVisibility(View.INVISIBLE);
         tv.append(ans[1]);
-    }
-
-    public void menu(View view) {
-        showDialog(1);
     }
 
     @Override
@@ -308,10 +356,9 @@ public class MainActivity extends AppCompatActivity {
                 CASBar = (ProgressBar) findViewById(R.id.CASBar);
                 MPBar = (ProgressBar) findViewById(R.id.MPBar);
                 NSBar = (ProgressBar) findViewById(R.id.NSBar);
-                bar pool1 = new bar(), pool2 = new bar(), pool3 = new bar();
-                pool1.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, 0);
-                pool2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, 1);
-                pool3.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, 2);
+                new bar().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, 0);
+                new bar().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, 1);
+                new bar().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, 2);
                 break;
         }
         if (classID != 3 && classID != 4) {
@@ -346,8 +393,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
+        getMenuInflater().inflate(R.menu.menu, menu);
         if (hideMenu)
             menu.getItem(0).setVisible(false);
         return true;
@@ -356,7 +402,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                back(new View(this));
+                back();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -408,7 +454,7 @@ public class MainActivity extends AppCompatActivity {
         spinnerRight.setAdapter(adapter2);
     }
 
-    public void back(View view) {
+    public void back() {
         try {
             getSupportActionBar().setTitle(R.string.app_name);
             getSupportActionBar().setHomeButtonEnabled(false);
@@ -428,6 +474,7 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             //closeOptionsMenu();
+                            closeOptionsMenu();
                             hideMenu = false;
                             invalidateOptionsMenu();
                         }
